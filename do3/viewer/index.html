@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Do3D · Model Viewer</title>
+  <link rel="stylesheet" href="./viewer.css">
+  <script type="importmap">
+    {"imports":{"three":"./vendor/three.module.min.js"}}
+  </script>
+  <script type="module" src="./viewer.js"></script>
+</head>
+<body>
+  <header class="toolbar">
+    <div class="identity">
+      <span class="brand">Do<span>3D</span></span>
+      <h1 id="filename">Model viewer</h1>
+    </div>
+    <div class="actions" aria-label="Display controls" role="group">
+      <div class="toggles">
+        <button id="lighting" aria-pressed="true" disabled>Lighting</button>
+        <button id="wireframe" aria-pressed="false" disabled>Wireframe</button>
+      </div>
+      <button id="reset" disabled>Reset view</button>
+    </div>
+  </header>
+  <main id="viewport" aria-label="3D model viewport" aria-describedby="navigation">
+    <div id="status" role="status">Loading model…</div>
+  </main>
+  <footer>
+    <span id="metrics"></span>
+    <span id="navigation">Drag to orbit <span>·</span> Scroll to zoom <span>·</span> Right-drag to pan</span>
+  </footer>
+</body>
+</html>

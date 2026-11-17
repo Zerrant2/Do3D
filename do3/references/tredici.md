@@ -1,0 +1,8 @@
+# Working in TREDICI
+
+Apply this only when the active project is TREDICI. Resolve every path from its repository root. Start with root and nested `AGENTS.md`. Read the relevant README sections, D-007 in `docs/DECISIONS.md`, the asset's specific brief from `docs/art/README.md`, `docs/MODELING_GUIDE.md`, and `docs/UNITY_ARTIST_QUICKSTART.md`. Use the current project files if conventions below have changed. Follow the project's planning and approval rules. Verify the authorized generation method with those instructions. Choose a project-permitted way to produce the orthographic references and get the user's approval before construction.
+
+- Author in the pinned Blender version. Use meters, Unit Scale 1, +Z up and −Y forward in Blender. Take the exact dimensions, pivots, part names, and budget from the asset brief and modeling guide.
+- Save the Blender source and asset card under `ArtSource/Models/<Category>/<AssetID>/`. Put the FBX and required PNGs in the guide's `Unity/Tredici/Assets/_Game/Art/Models/<Category>/` and `Textures/<Category>/` locations. Follow the current FBX export and Unity import settings in the guide and preserve existing `.meta` GUIDs.
+- When a Unity check applies, use Unity CLI with an explicit `--project-path` pointing to `Unity/Tredici`. Verify the relevant import, scale, orientation, and material assignments using the project's calibration and Windows acceptance procedure. Report which checks actually ran.
+- Use the standalone Do3D viewer for GLB inspection from an authorized preview directory outside Unity's `Assets`. Follow D-007 for verification and acceptance in Unity.
