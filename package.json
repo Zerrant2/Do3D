@@ -1,0 +1,12 @@
+{
+  "name": "do3d-viewer-build",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node src/viewer/build.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.0",
+    "three": "0.183.2"
+  }
+}

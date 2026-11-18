@@ -1,32 +1,40 @@
 # Do3D
 
-A Codex skill for turning an object description into a verified 3D asset in your project. Do3D researches the design, asks you to approve orthographic references, builds the model with PBR materials by default, and reimports the deliverable to check the result.
+**From an object description to a verified 3D asset.** Do3D is a Codex skill with a standalone offline viewer. Describe the object, approve its orthographic references, and inspect the finished model before handing it off.
 
-![Do3D viewer showing a textured sample model](docs/viewer.png)
+[Install the skill](#install-the-skill) · [Open the offline viewer](#open-the-offline-viewer) · [Read the workflow](do3/SKILL.md)
+
+![Do3D offline viewer displaying a textured GLB sample](docs/viewer.png)
 
 ## Install the skill
 
-Copy the entire [`do3/` directory](do3/) to your project's `.agents/skills/do3` or your personal `~/.agents/skills/do3`. Open Codex in the target project and select **Do3D** from the skill picker. In the CLI, type `$do3` to find it.
+In Codex, ask `$skill-installer` to install `do3` from `Zerrant2/Do3D`. For a manual install, copy the entire [`do3` folder](do3/) into your personal `~/.agents/skills` directory or your project's `.agents/skills` directory.
+
+Open Codex in your project and select **Do3D** from the skill picker. In Codex CLI, type `$do3` and select the skill.
 
 ```text
-$do3 Build a 240 × 75 × 25 mm matte plum pencil tray with a deeper well on the right. Deliver a low-poly GLB.
+$do3 Build a matte plum pencil tray, 240 × 75 × 25 mm, with a deeper well on the right. Deliver a low-poly GLB.
 ```
 
-The skill follows the active project's asset conventions and includes project-specific instructions for TREDICI. It requires your approval of the reference images before modeling.
+The skill waits for explicit approval of the reference set before construction, uses PBR materials by default, and reimports the export to check dimensions, orientation, geometry, and materials. It follows the active project's asset rules, including the [TREDICI conventions](do3/references/tredici.md) when applicable.
 
-## Try the viewer
+## Open the offline viewer
 
-With Node.js 20+ and a WebGL 2 browser, run this command from the repository root.
+Open [`do3/viewer/index.html`](do3/viewer/index.html) in a WebGL 2 browser. If you're viewing the file on GitHub, use **Download raw file** first. Everything needed to render is inside the HTML, including a textured demo. Click **Try sample** to see it.
 
-```sh
-node do3/viewer/launch.mjs do3/viewer/sample.glb
-```
+| To do this | Use this control |
+| --- | --- |
+| Load a self-contained GLB | **Open model** or drag the file into the viewport |
+| Load a glTF with separate textures or buffers | **Open folder** and select the folder containing the model and its linked files |
+| Inspect from another angle | Drag to orbit, scroll to zoom, or right-drag to pan |
+| Inspect the base colors and textures | Turn **Lighting** off |
+| Inspect triangle edges in either lighting mode | Turn **Wireframe** on |
+| Return to the initial framing | **Reset view** |
 
-Pass your own GLB or glTF file path to preview it with the same viewer. Orbit, zoom, pan, and reset the camera. Switch between lit and unlit materials and toggle the wireframe independently. The viewer runs on loopback and bundles its dependencies for offline use.
+The viewer works from a local file. It requires no server, Node.js, or Internet connection. See the [viewer guide](do3/README.md#launch-the-viewer) for supported glTF options and the optional command-line launcher.
 
-## Documentation
+## Development and documentation
 
-- [Installation, invocation, and viewer options](do3/README.md)
-- [Skill workflow](do3/SKILL.md)
-- [TREDICI conventions](do3/references/tredici.md)
-- [Three.js license](do3/viewer/vendor/LICENSE)
+- [Skill and viewer guide](do3/README.md)
+- [Viewer source and build steps](CONTRIBUTING.md)
+- [Bundled Three.js license](do3/viewer/THIRD_PARTY_LICENSES.txt)

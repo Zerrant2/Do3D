@@ -1,2 +1,2 @@
 * text=auto eol=lf
-do3/viewer/vendor/** -text
+do3/viewer/index.html linguist-generated=true -whitespace

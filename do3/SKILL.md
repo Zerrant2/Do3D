@@ -50,7 +50,7 @@ Reimport the exact delivery file into a fresh scene or independent import contex
 
 Launch the [bundled viewer](README.md#launch-the-viewer) with the verified GLB. For other formats, use a GLB made from the verified reimport, or from the same evaluated export geometry and materials. Check the preview against the deliverable for orientation, silhouette, parts, colors, and texture coverage. Keep the requested export as the deliverable. Use an approved preview location or a local temporary directory so preview files stay outside import folders.
 
-Open the preview by default. If browser launch is unavailable, provide the working command and a rendered preview. Report the asset path, delivery format, dimensions and units, triangle count, preview, and relevant verification limitations. Offer to open the asset in Blender if available.
+Open the preview by default. When Python 3.9+ is available, use the bundled `viewer/launch.py` with the preview model path to open it already loaded. Otherwise open the bundled `viewer/index.html` directly and select the model through the browser if available and authorized. If automatic opening is unavailable, provide the HTML and model paths, brief opening instructions, and a rendered preview. Report the asset path, delivery format, dimensions and units, triangle count, preview, and relevant verification limitations. Offer to open the asset in Blender if available.
 
 ## Capability gaps
 

@@ -11,6 +11,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
 body {
   margin: 0;
@@ -35,7 +36,7 @@ body {
   padding-block: 12px;
 }
 
-.identity, .actions, .toggles {
+.identity, .actions, .file-actions, .display-actions, .toggles {
   display: flex;
   align-items: center;
 }
@@ -57,9 +58,10 @@ h1 {
 }
 
 .actions { gap: 10px; flex: none; }
+.file-actions, .display-actions { gap: 8px; }
 .toggles { gap: 4px; padding: 3px; border-radius: 9px; background: #101117; border: 1px solid var(--edge); }
 
-button {
+button, select {
   font: inherit;
   font-size: 12px;
   font-weight: 630;
@@ -78,14 +80,20 @@ button[aria-pressed="true"] { color: #ece5ff; background: #362c54; border-color:
 button[aria-pressed="true"]:hover { background: #453666; }
 button:focus-visible { outline: none; border-color: var(--accent); }
 button:disabled { opacity: .45; cursor: default; }
-#reset { border-color: var(--edge); }
-#reset:focus-visible { border-color: var(--accent); }
+button#open-model { background: #c9b8ff; color: #221637; }
+button#open-model:hover { background: #e0d5ff; }
+button#open-model:focus-visible { border-color: #faf6ff; }
+#open-folder, #reset, #sample, select { border-color: var(--edge); }
+#open-folder:focus-visible, #reset:focus-visible, #sample:focus-visible { border-color: var(--accent); }
+select { background: var(--surface); max-width: min(18vw, 210px); }
 
 #viewport {
   position: relative;
   overflow: hidden;
   background: radial-gradient(ellipse at 50% 42%, #333747, #191b25 75%);
 }
+
+#viewport[data-drop] { box-shadow: inset 0 0 0 3px var(--accent); }
 
 canvas {
   display: block;
@@ -97,14 +105,14 @@ canvas {
 
 canvas:active { cursor: grabbing; }
 
-#status {
+#panel {
   position: absolute;
   z-index: 1;
   inset: 50% auto auto 50%;
   transform: translate(-50%, -50%);
   width: max-content;
   max-width: min(90%, 540px);
-  padding: 18px 22px;
+  padding: 24px 30px;
   border: 1px solid var(--edge);
   border-radius: 10px;
   background: var(--surface);
@@ -113,7 +121,11 @@ canvas:active { cursor: grabbing; }
   overflow-wrap: anywhere;
 }
 
-#status[data-error] { border-color: #814958; color: #ffd7df; }
+#status { margin: 0; font-size: 19px; font-weight: 650; }
+#hint { margin: 6px 0 14px; color: var(--muted); }
+#hint:empty { display: none; }
+#panel[data-error] { border-color: #814958; }
+#panel[data-error] #status { color: #ffd7df; }
 
 footer {
   min-height: 46px;
@@ -126,11 +138,13 @@ footer {
 #metrics { font-variant-numeric: tabular-nums; }
 #navigation span { color: var(--accent); margin-inline: 5px; }
 
-@media (max-width: 620px) {
+@media (max-width: 780px) {
   .toolbar, footer { flex-wrap: wrap; }
   .toolbar { gap: 10px; }
   .identity { flex: 0 1 100%; }
   .actions { max-width: 100%; flex-wrap: wrap; }
+  .file-actions { max-width: 100%; flex-wrap: wrap; }
+  select { max-width: 220px; }
   button { padding-inline: 10px; }
   #metrics:empty { display: none; }
 }
